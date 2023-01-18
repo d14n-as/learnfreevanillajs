@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modal</title>
+    <style>
+        .modal-overlay {
+            position:fixed;
+            background-color: #fff;
+            top:0;
+            width: 100%;
+            height: 100%;
+            left: 0;
+            right: 0;
+            display: grid;
+            place-items: center;
+            visibility: hidden;
+            z-index: -10;
+        }
+        .open-modal {
+            visibility: visible;
+            z-index: 10;
+        }
+    </style>
+</head>
+<body>
+    
+    <header class="hero">
+        <div class="banner">
+            <h1>
+                Modal Project
+            </h1>
+            <button class="btn modal-btn">open modal</button>
+        </div>
+    </header>
+
+
+    <div class="modal-overlay">
+        <div class="modal-container">
+            <h3>Modal Content</h3>
+            <button class="close-btn">Close</button>
+        </div>
+    </div>
+    <script type="text/javascript">
+        const modalBtn = document.querySelector('.modal-btn');
+        const modal = document.querySelector('.modal-overlay');
+        const closeBtn = document.querySelector('.close-btn');
+
+        modalBtn.addEventListener('click', function() {
+            modal.classList.add('open-modal');
+        });
+
+        closeBtn.addEventListener('click', function() {
+            modal.classList.remove('open-modal');
+        })
+    </script>
+</body>
+</html>

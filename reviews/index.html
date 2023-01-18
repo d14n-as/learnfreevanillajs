@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reviews</title>
+    <style>
+
+    </style>
+</head>
+<body>
+
+    <main>
+        <section class="container">
+            <div class="title">
+                <h2>Our Review</h2>
+                <div class="underline"></div>
+            </div>
+            
+            <article class="review">
+                <div class="img-container">
+                    <img src="https://via.placeholder.com/300" id="person-img" alt="">
+                </div>
+                <h4 id="author">Abdul 1</h4>
+                <p id="job">UI designer</p>
+                <p id="info">Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit dolore libero voluptatem deserunt corporis illo blanditiis totam. Veniam tempora maxime, in, sequi at exercitationem a nihil, ratione nulla odio debitis.</p>
+                <div class="button-container">
+                    <button class="prev">prev</button>
+                    <button class="next">next</button>
+                </div>
+                <button class="random-btn">suprise me</button>
+            </article>
+        </section>
+    </main>
+    <script type="text/javascript">
+
+        const reviews = [
+            {
+                id:1,
+                name: 'Dian Abdul',
+                Job: 'Web Developer',
+                img: "https://via.placeholder.com/300",
+                text: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit dolore libero voluptatem deserunt corporis illo blanditiis totam. Veniam tempora maxime, in, sequi at exercitationem a nihil, ratione nulla odio debitis.'
+            },
+            {
+                id:2,
+                name: 'Ridho Tamma',
+                Job: 'Fullstack Dev',
+                img: "https://via.placeholder.com/200",
+                text: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit dolore libero voluptatem deserunt corporis illo blanditiis totam. Veniam tempora maxime, in, sequi at exercitationem a nihil, ratione nulla odio debitis.'
+            },
+            {
+                id:3,
+                name: 'Jannette',
+                Job: 'UI designer',
+                img: "https://via.placeholder.com/300",
+                text: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit dolore libero voluptatem deserunt corporis illo blanditiis totam. Veniam tempora maxime, in, sequi at exercitationem a nihil, ratione nulla odio debitis.'
+            },
+            {
+                id:4,
+                name: 'Yukari',
+                Job: 'UX designer',
+                img: "https://via.placeholder.com/200",
+                text: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit dolore libero voluptatem deserunt corporis illo blanditiis totam. Veniam tempora maxime, in, sequi at exercitationem a nihil, ratione nulla odio debitis.'
+            },
+        ];
+
+        const img = document.getElementById("person-img");
+        const author = document.getElementById("author");
+        const job = document.getElementById("job");
+        const info = document.getElementById("info");
+
+        const prevBtn = document.querySelector(".prev");
+        const nextBtn = document.querySelector(".next");
+        const randomBtn = document.querySelector(".random-btn");
+
+        let currentItem = 0;
+
+        window.addEventListener('DOMContentLoaded', function() {
+            showPerson();
+        });
+
+        function showPerson() {
+            const item = reviews[currentItem];
+            img.src = item.img;
+            author.textContent = item.name;
+            job.textContent = item.job;
+            info.textContent = item.text;
+        }
+
+
+        nextBtn.addEventListener('click', function() {
+            currentItem++;
+            if(currentItem > reviews.length - 1) {
+                currentItem = 0;
+            }
+            showPerson(currentItem);
+        });
+
+
+        prevBtn.addEventListener('click', function() {
+            currentItem--;
+            if(currentItem < 0) {
+                currentItem = reviews.length - 1;
+            }
+            showPerson(currentItem);
+        });
+
+
+        randomBtn.addEventListener('click', function() {
+            currentItem = Math.floor(Math.random() * reviews.length);
+            console.log(currentItem);
+            showPerson();
+        });
+
+
+    </script>
+</body>
+</html>
